@@ -1,11 +1,11 @@
 import logging
 
+from bs4 import BeautifulSoup
 from requests import RequestException
-
-from exceptions import ParserFindTagException
 from requests_cache import CachedSession
 from requests_cache.models.response import OriginalResponse
-from bs4 import BeautifulSoup
+
+from exceptions import ParserFindTagException
 
 
 def get_response(session: CachedSession, url: str) -> OriginalResponse:

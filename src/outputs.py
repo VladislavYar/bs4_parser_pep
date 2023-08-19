@@ -1,9 +1,9 @@
 import csv
-import logging
 import datetime as dt
+import logging
+from argparse import Namespace
 
 from prettytable import PrettyTable
-from argparse import Namespace
 
 from constants import BASE_DIR, DATETIME_FORMAT
 
