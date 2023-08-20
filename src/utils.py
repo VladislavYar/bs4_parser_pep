@@ -5,6 +5,7 @@ from requests import RequestException
 from requests_cache import CachedSession
 from requests_cache.models.response import OriginalResponse
 
+from constants import ENCODING
 from exceptions import ParserFindTagException
 
 
@@ -12,7 +13,7 @@ def get_response(session: CachedSession, url: str) -> OriginalResponse:
     """Делает запрос к странице."""
     try:
         response = session.get(url)
-        response.encoding = 'utf-8'
+        response.encoding = ENCODING
         return response
     except RequestException:
         logging.exception(

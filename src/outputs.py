@@ -5,7 +5,7 @@ from argparse import Namespace
 
 from prettytable import PrettyTable
 
-from constants import BASE_DIR, DATETIME_FORMAT
+from constants import BASE_DIR, DATETIME_FORMAT, ENCODING, OuputType
 
 
 def file_output(results: list, cli_args: Namespace) -> None:
@@ -17,7 +17,7 @@ def file_output(results: list, cli_args: Namespace) -> None:
     now_formatted = now.strftime(DATETIME_FORMAT)
     file_name = f'{parser_mode}_{now_formatted}.csv'
     file_path = results_dir / file_name
-    with open(file_path, 'w', encoding='utf-8') as f:
+    with open(file_path, 'w', encoding=ENCODING) as f:
         writer = csv.writer(f, dialect='unix')
         writer.writerows(results)
     logging.info(f'Файл с результатами был сохранён: {file_path}')
@@ -26,9 +26,9 @@ def file_output(results: list, cli_args: Namespace) -> None:
 def control_output(results: list, cli_args: Namespace) -> None:
     """Логика вызова функций для вывода данных."""
     output = cli_args.output
-    if output == 'pretty':
+    if output == OuputType.PRETTY:
         pretty_output(results)
-    elif output == 'file':
+    elif output == OuputType.FILE:
         file_output(results, cli_args)
     else:
         default_output(results)
