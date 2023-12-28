@@ -24,3 +24,6 @@ optional arguments:
   -o {pretty,file}, --output {pretty,file}
                         Дополнительные способы вывода данных
 ```
+
+## Cтек проекта
+Python v3.9, BeautifulSoup4
